@@ -1,5 +1,4 @@
 # Rafai3-frontend
-Ecommerce Application
 This project was generated with Angular CLI version 11.1.2
 
 # Development server
