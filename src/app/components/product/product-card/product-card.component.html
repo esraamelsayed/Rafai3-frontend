@@ -1,0 +1,47 @@
+<div class='row pb-5 justify-content-center align-content-center' *ngIf="products">
+  <div class='col-lg-3 col-md-6 mb-4 mb-lg-0 m-md-3 m-3' *ngFor="let product of showedData">
+    <div class="card text-center shadow-lg" style="width: 15rem;">
+      <img [src]='product.imageUrl' class="card-img-top">
+      <div class="card-body" style="background-color: rgb(153,155,132);">
+        <h5 class="card-title display-5" style="color: rgb(239,217,209);">{{product.title}}</h5>
+        <button (click)='onMoreDeatils(product)' data-toggle="modal" data-target="#exampleModal" class="btn shadow-lg"
+          style="background-color: rgb(216,172,156); color:rgb(153,155,132);">Product
+          details</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 60% !important;">
+    <div class="modal-content" style="background-color: rgba(216, 172, 156, 0.884);">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel" style="color: rgb(239,217,209);">{{product.title}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class='container-fluid'>
+          <div class='row justify-content-center align-content-center'>
+            <div class='col-6'>
+              <img [src]='product.imageUrl' class='img-fluid' style="width: 20rem; height: 30rem;">
+            </div>
+            <div class='col-6 d-flex flex-column justify-content-around align-items-start mb-3'>
+              <div style="font-size: 2rem; color: rgb(239,217,209);">{{product.title}}</div>
+              <div style="font-size: 1rem; color: rgb(239,217,209);">{{product.details}}</div>
+              <div style="font-size: 2rem; color: rgb(239,217,209);">Price : {{product.price}} $</div>
+              <button (click)='addToCart()'
+              class='btn shadow-lg align-self-center'
+                style="background-color: rgb(153,155,132); color: rgb(216,172,156); font-size: 2rem;">ADD TO
+                CART</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>

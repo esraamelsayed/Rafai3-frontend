@@ -1,0 +1,42 @@
+
+
+
+
+<div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+
+
+          <div class="table-responsive">
+            <table class="table">
+              
+         
+                <tr >
+            
+                  
+                  <td class="border-0 align-middle"><strong>{{orderDetails._id}}</strong></td>
+                  <td class="border-0 align-middle"><strong>{{orderDetails.totalquantity}}</strong></td>
+                  <td class="border-0 align-middle"><strong>{{orderDetails.totalprice}}</strong></td>
+                  <td class="border-0 align-middle"><strong>{{createdAt}}</strong></td>
+                  <td [ngClass]="{'text-success': orderDetails.status === 'accepted', 'text-danger':orderDetails.status === 'rejected' }" class="border-0 align-middle"><strong>{{orderDetails.status}}</strong></td>
+                  <td [ngClass]="{'text-success': orderDetails.status === 'accepted', 'text-danger':orderDetails.status === 'rejected' }" class="border-0 align-middle"><strong>{{orderDetails.statusmessage}}</strong></td>
+                 
+              
+                </tr> 
+
+            
+ 
+            </table>
+
+            <div class="text-center">
+              <h4 class="text-danger" [ngClass]="{'text-success': confirmCancel === 'Order is deleted'}">{{confirmCancel}}</h4>
+              <input (click)="cancelOrder()" class="btn btn-danger"  type="button" value="Cancel order" name="cancelOrder" id="cancel_order">
+            </div>
+          </div>
+   
+        </div>
+      </div>
+
+      </div>
+ </div>

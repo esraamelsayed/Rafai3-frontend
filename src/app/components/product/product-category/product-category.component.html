@@ -1,0 +1,8 @@
+<div class='container-fluid px-3' style="background-color: rgb(216,172,156);">
+  <app-product-header [filterOfHeader]='categoryFilter'></app-product-header>
+  <app-category-menu
+  (filterEmitt)='onEmitt($event)'
+  (searchEmittToParent)='onTitleEmit($event)'
+  ></app-category-menu>
+  <router-outlet></router-outlet>
+</div>

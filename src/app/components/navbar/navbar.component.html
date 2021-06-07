@@ -1,0 +1,171 @@
+<!-- <nav
+class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: #d8ac9c;"
+>
+<div class="container-fluid">
+  <a class="navbar-brand" href="#">Rafai3</a> -->
+<!--img src="assets/images/logo3.jpg" style="height: 90px; border-radius: 50%;"-->
+
+<!-- <form class="d-flex">
+    <div class="burger-icon"></div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">our products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Cart</a>
+        </li>
+      </ul>
+
+      <button
+        class="btn btn-outline-success"
+        style="color: white; border: 2px solid white"
+        type="submit"
+      >
+        Log in
+      </button>
+    </div>
+  </form>
+</div>
+</nav> -->
+
+<div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+        <a class="navbar-brand" style="color: rgb(243, 204, 190)" (click)="navigateAdminRoute()">Rafai3</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active">
+                    <a *ngIf="!checkIfAdmin" class="nav-link active" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="text-danger" routerLink="" class="nav-link" aria-current="home">Home</a
+          >
+        </li>
+
+        <li class="nav-item active">
+          <a *ngIf="checkIfAdmin&&adminDetails" class="nav-link active category-menu-item" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="category-menu-item-selected"
+            routerLink="admin/product"  >Products</a>
+        </li>
+        <li class="nav-item active">
+          <a *ngIf="checkIfAdmin&&adminDetails" class="nav-link active category-menu-item" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="category-menu-item-selected"
+            routerLink="admin/order" >Orders</a>
+        </li>
+
+        <li class="nav-item active">
+          <a *ngIf="checkIfAdmin&&adminDetails" class="nav-link active category-menu-item" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="category-menu-item-selected"
+            routerLink="admin/promotions"  >promotions</a>
+        </li>
+
+      
+
+        <li class="nav-item active" *ngIf="userDetails" (click)="navigateOurProducts()">
+          <a
+            id="product"
+            *ngIf="!checkIfAdmin"
+            class="nav-link"
+            >our products</a
+          >
+        </li>
+
+        <li class="nav-item dropdown" *ngIf="userDetails">
+          <a
+            *ngIf="!checkIfAdmin"
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Cart
+          </a>
+                    <div *ngIf="!checkIfAdmin" style="background-color: rgb(153, 155, 132)" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="text-danger" routerLink="user/cart" href="#">MY Cart</a
+            >
+            <a
+              class="dropdown-item"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive="text-danger"
+              routerLink="user/order"
+              href="#"
+              >My Orders</a
+            >
+          </div>
+        </li>
+
+        <li class="nav-item" *ngIf="userDetails">
+          <a
+            *ngIf="!checkIfAdmin"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="text-danger"
+            routerLink="user/profile"
+            class="nav-link"
+            >profile</a
+          >
+        </li>
+      </ul>
+      <div
+        *ngIf="!(userDetails || adminDetails)"
+        class="form-inline my-2 my-lg-0"
+      >
+        <button
+          id="login"
+          class="btn btn-outline-success"
+          style="color: white; border: 2px solid white"
+          type="submit"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="text-danger"
+          (click)="navigateLogin()"
+        >
+          <span> Log in</span>
+        </button>
+
+        <button
+          id="register"
+          *ngIf="!checkIfAdmin"
+          class="btn btn-outline-success"
+          style="color: white; border: 2px solid white"
+          type="submit"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="text-danger"
+          routerLink="user/register"
+        >
+          <span *ngIf="!checkIfAdmin"> Register</span>
+        </button>
+      </div>
+      <div
+        *ngIf="userDetails || adminDetails"
+        class="form-inline my-2 my-lg-0 "
+      >
+        <span *ngIf="userDetails" style="color: white;">Welcome</span>
+        <span style="color: rgb(239,217,209);" *ngIf="userDetails" class=" mx-4"
+          >{{ userDetails.firstname }} {{ userDetails.lastname }}</span
+        >
+        <span *ngIf="adminDetails"> Admin</span>
+        <span style="color: rgb(239,217,209);" *ngIf="adminDetails" class=" mx-4"
+          >{{ adminDetails.firstname }} {{ adminDetails.lastname }}</span
+        >
+        <input
+          type="button"
+          class="btn btn-danger"
+          value="Log out"
+          id="logout"
+          (click)="logout()"
+        />
+      </div>
+
+      <i class="fas fa-users-cog" (click)="adminPage()"></i>
+    </div>
+  </nav>
+</div>

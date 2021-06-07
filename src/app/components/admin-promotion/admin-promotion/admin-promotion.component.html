@@ -1,0 +1,51 @@
+<div class='container mt-5 pt-3'>
+<div class='row justify-content-center align-content-center   mb-4 shadow-lg rounded'
+style="background-color: rgb(216,172,156);"
+*ngFor='let promotion of promotions' >
+<div class='col-9 d-flex justify-content-between align-items-center'>
+  <div class='d-flex justify-content-around align-items-center w-100' >
+    <div class="mr-2" style="font-size: 1rem; color: rgb(239,217,209); max-width: 60%; min-width: 60%">{{promotion.promotion}}</div>
+    <div class='mr-2' style=" font-size: 2rem; color: rgb(239,217,209);">{{promotion.newprice}} $</div>
+    <div class='more-Product' (click)='captureProduct(promotion)' >Product Details</div>
+  </div>
+</div>
+<div class='btns d-flex justify-content-end align-items-center'>
+  <i (click)='onDeletePromotion(promotion)' style="font-size: 2rem; color: rgb(153,155,132); cursor: pointer;" class="fa fa-trash-o mr-5"></i>
+</div>
+
+</div>
+
+
+<div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel9" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 60% !important;">
+    <div *ngIf="product" class="modal-content" style="background-color: rgba(216, 172, 156, 0.884);">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel9" style="color: rgb(239,217,209);">{{product.title}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class='container-fluid'>
+          <div class='row justify-content-center align-content-center'>
+            <div class='col-6'>
+              <img [src]='product.imageUrl' class='img-fluid' style="width: 20rem; height: 30rem;">
+            </div>
+            <div class='col-6 d-flex flex-column justify-content-around align-items-start mb-3'>
+              <div style="font-size: 2rem; color: rgb(239,217,209);">{{product.title}}</div>
+              <div style="font-size: 1rem; color: rgb(239,217,209);">{{product.details}}</div>
+              <div style="font-size: 2rem; color: rgb(239,217,209);">Price : {{product.price}} $</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="closeModalButton9" [hidden]="true" data-toggle="modal"
+data-target="#exampleModal9" class="btn btn-default"></button>
+

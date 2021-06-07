@@ -1,0 +1,46 @@
+<div class="text-center my-5">
+
+    <h4 class="text-primary">Login as Admin</h4><br><br>
+
+
+    <form [formGroup]="loginForm">
+
+        <div class="form-group">
+            <label for="username">
+                <h5>Enter yoour username</h5>
+            </label>
+            <input #username class="form-control w-50 m-auto " name="username" id="" formControlName="username">
+            <div name="validations" *ngIf="firstLoginClick&&loginForm.invalid">
+                <span class="text-danger" *ngIf="loginForm.controls.username.errors?.required">Username is
+                    required</span>
+                <span class="text-danger" *ngIf="loginForm.controls.username.errors?.maxlength">username characters
+                    exceeded maximum length of 20</span>
+                <span class="text-danger" *ngIf="loginForm.controls.username.errors?.minlength">username characters
+                    are less than 5 characters</span>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">
+                <h5>Enter your password</h5>
+            </label>
+            <input type="password" #password class="form-control w-50 m-auto" formControlName="password"
+                name="password">
+            <div name="validations" *ngIf="firstLoginClick&&loginForm.invalid">
+                <span class="text-danger" *ngIf="loginForm.controls.password.errors?.required">password is
+                    required</span>
+                <span class="text-danger" *ngIf="loginForm.controls.password.errors?.maxlength">password characters
+                    exceeded maximum length of 20</span>
+                <span class="text-danger" *ngIf="loginForm.controls.password.errors?.minlength">password characters
+                    are less than 8 characters</span>
+
+            </div>
+        </div>
+        <h4 class="text-danger" *ngIf="faliedLogin!=''">
+            {{faliedLogin}}. Try again and press login
+        </h4>
+        <input type="button" class="btn btn-primary" (click)="login(username,password)" value="login">
+    </form>
+
+</div>

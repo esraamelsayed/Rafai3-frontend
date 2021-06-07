@@ -1,0 +1,86 @@
+
+<link
+rel="stylesheet"
+href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+crossorigin="anonymous"
+/>
+
+<link
+href="https://fonts.googleapis.com/css?family=Lato:100,300,400"
+rel="stylesheet"
+/>
+<body>
+<form [formGroup]="loginForm">
+  <div class="login-box">
+    <div class="input-section">
+      <i class="far fa-user"></i>
+      <input
+        class="input-area form-control"
+        type="text"
+        placeholder="Username"
+        #username
+        name="username"
+        formControlName="username"
+      />
+      <div name="validations" *ngIf="loginForm.invalid && firstLoginClick">
+        <span
+          class="text-danger"
+          *ngIf="loginForm.controls.username.errors?.required"
+          >Username is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="loginForm.controls.username.errors?.maxlength"
+          >username characters exceeded maximum length of 20</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="loginForm.controls.username.errors?.minlength"
+          >username characters are less than 5 characters</span
+        >
+      </div>
+    </div>
+    <div class="input-section form-group">
+      <i class="fas fa-lock"></i>
+      <input
+        class="input-area form-control"
+        type="password"
+        placeholder="Password"
+        #password
+        formControlName="password"
+        name="password"
+      />
+      <div name="validations" *ngIf="loginForm.invalid && firstLoginClick">
+        <span
+          class="text-danger"
+          *ngIf="loginForm.controls.password.errors?.required"
+          >password is required</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="loginForm.controls.password.errors?.maxlength"
+          >password characters exceeded maximum length of 20</span
+        >
+        <span
+          class="text-danger"
+          *ngIf="loginForm.controls.password.errors?.minlength"
+          >password characters are less than 8 characters</span
+        >
+      </div>
+    </div>
+
+    <h4 class="text-danger" *ngIf="faliedLogin != ''">
+      {{ faliedLogin }}. Try again and press login
+    </h4>
+    <button
+      class="btn"
+      id="login-btn"
+      (click)="login(username, password)"
+      value="login"
+    >
+      Login
+    </button>
+  </div>
+</form>
+</body>

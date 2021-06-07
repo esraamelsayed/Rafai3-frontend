@@ -1,0 +1,9 @@
+.more-Product{
+  font-size: 1rem;
+  color: rgb(239,217,209);
+}
+
+.more-Product:hover{
+  color:rgb(153,155,132);
+  cursor: pointer;
+}

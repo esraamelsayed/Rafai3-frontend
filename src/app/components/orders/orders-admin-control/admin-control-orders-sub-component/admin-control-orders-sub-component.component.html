@@ -1,0 +1,57 @@
+
+
+<!-- <ul  *ngIf="allOrders" >
+    <li *ngFor="let order of allOrders">
+
+        <app-admin-control-orders-sub-component [orderDetails]="order"></app-admin-control-orders-sub-component>
+    </li>
+</ul> -->
+
+
+
+<div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+
+          <!-- Shopping cart table -->
+          <div class="table-responsive">
+            <table class="table">
+              
+         
+                <tr >
+            
+                  
+                  <td class="border-0 align-middle"><strong>{{orderDetails._id}}</strong></td>
+                  <td class="border-0 align-middle"><strong>{{orderDetails.totalquantity}}</strong></td>
+                  <td class="border-0 align-middle"><strong>{{orderDetails.totalprice}}</strong></td>
+                  <td class="border-0 align-middle"><strong>{{createdAt}}</strong></td>
+                  <td [ngClass]="{'text-success': orderDetails.status === 'accepted', 'text-danger':orderDetails.status === 'rejected' }" class="border-0 align-middle"><strong>{{orderDetails.status}}</strong></td>
+                  <td class="border-0 align-middle"><input (click)="acceptOrder(accept.value)" type="button" value="Accept" class="btn btn-success"></td>
+                  <td class="border-0 align-middle"><input (click)="rejectOrder(reject.value)" type="button" value="Reject" class="btn btn-danger"></td>
+
+    
+              
+                </tr> 
+
+            
+ 
+            </table>
+
+            <div class="text-center">
+
+              <strong class="mx-3">Reason for rejection:</strong>
+              <div style="display: inline;" class="text-center"><input #reject class="shadow p-3 mb-5 bg-white rounded"  type="text"></div>
+              <br>
+              <strong class="mx-3"> Order will be delivered at date </strong>
+              <div style="display: inline;" class="text-center"><input #accept class="shadow p-3 mb-5 bg-white rounded"  type="date"></div>
+              <h5 class="text-danger text-center">{{messageIncluded}}</h5>
+              <h5 class=" text-center">More details about order <a  routerLink="{{orderDetails._id}}" class="text-danger">Click here</a></h5>
+            </div>
+          </div>
+          <!-- End -->
+        </div>
+      </div>
+
+      </div>
+ </div>

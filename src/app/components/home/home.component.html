@@ -1,0 +1,201 @@
+<!-- <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head> -->
+
+<body>
+    <div style="height: 55px;"></div>
+    <div>
+        <!-- <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Rafai3</a>
+
+          <form class="d-flex">
+            <div class="burger-icon"></div>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">our products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Cart</a>
+                </li>
+              </ul>
+
+              <button
+                class="btn btn-outline-success"
+                style="color: white; border: 2px solid white"
+                type="submit"
+              >
+                login
+              </button>
+            </div>
+          </form>
+        </div>
+      </nav> -->
+
+        <!--slider-->
+        <base href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/" />
+        <div id="slider">
+            <figure>
+                <img src="assets/images/img2.jpg" style="height: 600px" alt />
+                <img src="assets/images/img3.jpg" style="height: 600px" alt />
+                <img src="assets/images/img16.jpg" style="height: 600px" alt />
+                <img src="assets/images/img1.jpg" style="height: 600px" alt />
+            </figure>
+        </div>
+    </div>
+
+    <!--cards-->
+    <div id="h1">
+        <br />
+        <h1 style="text-align: center">Discover our Products</h1>
+        <br />
+        <div class="cards-list">
+            <div class="card 1">
+                <div class="card_image">
+                    <img src="assets/images/img11.jpg" />
+                </div>
+            </div>
+
+            <div class="card 2">
+                <div class="card_image">
+                    <img src="assets/images/img17.jpg" />
+                </div>
+            </div>
+
+            <div class="card 3">
+                <div class="card_image">
+                    <img src="assets/images/img15.jpg" />
+                </div>
+            </div>
+
+            <div class="card 4">
+                <div class="card_image">
+                    <img src="assets/images/img23.jpg" />
+                </div>
+            </div>
+
+            <div class="card 5">
+                <div class="card_image">
+                    <img src="assets/images/img19.jpg" />
+                </div>
+            </div>
+            <div class="card 6">
+                <div class="card_image">
+                    <img src="assets/images/gif2.gif" />
+                </div>
+                <!--div class="card_title title-black">
+            <p>Card Title</p>
+          </div-->
+            </div>
+
+            <div class="card 7">
+                <div class="card_image">
+                    <img src="assets/images/img22.jpg" />
+                </div>
+            </div>
+
+            <div class="card 8">
+                <div class="card_image">
+                    <img src="assets/images/img16.jpg" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 class='text-center mt-5 mb-5'>You can find a lot of Promotions</h1>
+    <div id='h1' class='row pb-5 justify-content-center align-content-center' *ngIf="products">
+        <!--promotion section-->
+        <div class='col-lg-3 col-md-6 mb-4 mb-lg-0 m-md-3 m-3' *ngFor="let prom of products; let i = index">
+
+            <div class="card rounded" style="width: 18rem; height: fit-content;">
+                <img class="card-img-top rounded" [src]='prom.imageUrl' alt="Card image cap">
+                <div class="card-body" style="background-color: rgb(153,155,132);">
+                    <p style="color: rgb(239,217,209); font-size: 2rem" class="card-title">{{prom.title}}</p>
+                    <p style="color: rgb(239,217,209);" class="card-text">{{prom.details}}</p>
+                    <p style="color: rgb(216,172,156); font-weight: bold;font-size: 2rem; text-decoration: underline;" class="card-text text-center">{{promotions[i].promotion}}</p>
+                    <div class='d-flex justify-content-around align-content-center'>
+                        <p style="color: red; text-decoration: line-through;" class="card-text">{{prom.price}}$</p>
+                        <p style="color: rgb(239,217,209);" class="card-text">{{promotions[i].newprice}}$</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--promotion section-->
+    <!--  https://giphy.com/gifs/kawaii-kitchen-l0HlPZiLi4qr2bmMw footer-->
+    <!-- Site footer -->
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p id="about" class="text-justify">
+                        Rfai3.com
+                        <i>Accessories That Make Your Home More Simple And Upscale </i> In our application you will find: Decorative Accessories, home accents, decorative items. when we enter a completed house with home accessories, we can be completely
+                        amazed. You will find answers to questions such as " which accessory is right to use", and accessories shopping will make your living space perfect. A house without a candle, a flower, a table is dry and louse like a leafless tree.
+                        The accessories that are to blossom it are just like the bougainvillea tree in a season.
+                    </p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="http://Rafai3.com/category/">Kitcken accessories</a>
+                        </li>
+                        <li>
+                            <a href="http://Rafai3.com/category/">Living decorations</a>
+                        </li>
+                        <li><a href="http://Rafai3.com/category/">Bedroom</a></li>
+                        <li><a href="http://Rafai3.com/category/">BathRoom</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <img src="assets/images/logo3.jpg" style="height: 180px; border-radius: 3%" />
+                </div>
+            </div>
+            <hr />
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">
+                        Copyright &copy; 2021 All Rights Reserved by
+                        <a href="#">Rafai3</a>.
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                        <li>
+                            <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="fa fa-youtube"></a>
+                        </li>
+                        <li>
+                            <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                        </li>
+                        <li>
+                            <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>

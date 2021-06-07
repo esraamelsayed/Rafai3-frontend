@@ -1,0 +1,19 @@
+input{
+  width: 400px;
+  height: 50px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border : 3px solid rgb(153,155,132);
+  padding-left: 30px;
+  font-size: 28px;
+  outline: none;
+}
+
+input:hover{
+  border: 0px;
+  border-bottom: 3px solid  rgb(216,172,156);
+}
+
+div{
+  text-align: center;
+}

@@ -1,0 +1,118 @@
+<div class='row justify-content-center align-content-center  mb-4 shadow-lg rounded'
+style="background-color: rgb(216,172,156);"
+*ngFor='let product of products' >
+  <div class='col-2 ml-5 text-center'>
+    <img (click)="captureProduct(product)" [src]='product.imageUrl' class='img-thumbnail shadow-lg' style="width: 10rem; height: 15rem; cursor: zoom-in; " data-toggle="modal" data-target="#exampleModal">
+    <div style="font-size: 1.5rem; color: rgb(239,217,209);">{{product.title}}</div>
+  </div>
+  <div class='col-8 d-flex justify-content-between align-items-center'>
+    <div class='d-flex justify-content-around align-items-center w-100' >
+      <div class="mr-2" style="font-size: 1rem; color: rgb(239,217,209); max-width: 60%; min-width: 60%">{{product.details}}</div>
+      <div style="font-size: 2rem; color: rgb(239,217,209);">{{product.category}}</div>
+      <div style="font-size: 2rem; color: rgb(239,217,209);">{{product.price}} $</div>
+    </div>
+  </div>
+  <div class='btns d-flex justify-content-end align-items-center'>
+    <i (click)='captureProduct(product)' data-toggle="modal" data-target="#exampleModal3" style="font-size: 2rem; color: rgb(153,155,132); cursor: pointer;" class="fa fa-edit mr-5"></i>
+    <i (click)='onDeleteProduct(product)' style="font-size: 2rem; color: rgb(153,155,132); cursor: pointer;" class="fa fa-trash-o mr-5"></i>
+    <i (click)='captureProduct(product)' data-toggle="modal" data-target="#exampleModal4" style="font-size: 2rem; color: rgb(153,155,132); cursor: pointer;" class="fa fa-fire"></i>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 60% !important;">
+    <div class="modal-content"  style="background-color: rgba(216, 172, 156, 0.884);">
+      <div class="modal-header text-center">
+        <h3 class="modal-title w-100" id="exampleModalLabel" style="color: rgb(239,217,209);">{{product.title}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class='container-fluid'>
+          <div class='row justify-content-center align-content-center'>
+              <img [src]='product.imageUrl' class='img-fluid' style="width: 20rem; height: 30rem;">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 60% !important;">
+    <div class="modal-content"  style="background-color: rgba(216, 172, 156, 0.884);">
+      <div class="modal-header text-center">
+        <h3 class="modal-title w-100" id="exampleModalLabel3" style="color: rgb(239,217,209);">{{product.title}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]='oldProductForm ' (ngSubmit)='onEditProduct()'>
+        <div class="modal-body">
+          <div class='container-fluid justify-content-center align-content-center d-flex'>
+            <div class='row w-50 flex-column justify-content-center align-items-center'>
+              <div class='d-flex flex-column justify-content-center align-items-center mb-3'>
+                <img [src]='product.imageUrl' class='img-thumbnail mb-2 bg-transparent' style="width: 10rem; height: 15rem;">
+                <input class='form-control-file' placeholder="image" type="file" (change)='onImageSelected($event.target)'/>
+              </div>
+              <input required class='form-control mb-3 form-control-lg' placeholder="title" type="text" minlength="5" formControlName='title' />
+              <input required class='form-control mb-3 form-control-lg' placeholder="details" type="text" minlength="10" formControlName='details' />
+              <input required class='form-control mb-3 form-control-lg' placeholder="price" type="number" min=1 formControlName='price' />
+              <select required class="form-control form-control-lg" formControlName='category' >
+                <option>kitchen</option>
+                <option>living</option>
+                <option>bedroom</option>
+                <option>bathroom</option>
+                <option>others</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]='!oldProductForm.valid' type='submit' class='btn shadow-lg'
+          style="background-color: rgb(153,155,132); color: rgb(239,217,209); font-size: 1rem;">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<button id="closeModalButton3" [hidden]="true" data-toggle="modal"
+data-target="#exampleModal3" class="btn btn-default"
+data-dismiss="modal"></button>
+
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 60% !important;">
+    <div class="modal-content"  style="background-color: rgba(216, 172, 156, 0.884);">
+      <div class="modal-header text-center">
+        <h3 class="modal-title w-100" id="exampleModalLabel4" style="color: rgb(239,217,209);">{{product.title}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]='promoteProductForm' (ngSubmit)='onPromoteProduct()'>
+        <div class="modal-body">
+          <div class='container-fluid justify-content-center align-content-center d-flex'>
+            <div class='row w-50 flex-column justify-content-center align-items-center'>
+
+              <input required class='form-control mb-3 form-control-lg' placeholder="Promotion" type="text" minlength="5" formControlName='promotion' />
+              <input required class='form-control mb-3 form-control-lg' placeholder="New price" type="number" min=1 formControlName='newprice' />
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]='!promoteProductForm.valid' type='submit' class='btn shadow-lg'
+          style="background-color: rgb(153,155,132); color: rgb(239,217,209); font-size: 1rem;">Promote</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<button id="closeModalButton4" [hidden]="true" data-toggle="modal"
+data-target="#exampleModal4" class="btn btn-default"
+data-dismiss="modal"></button>

@@ -1,0 +1,14 @@
+.category-menu-item{
+  color: rgb(239,217,209);
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.category-menu-item:hover{
+  text-shadow: 2px 2px rgb(216,172,156);
+}
+
+.category-menu-item-selected{
+  color: rgb(216,172,156);
+}

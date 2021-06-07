@@ -1,0 +1,332 @@
+<div>
+  <body id="body" class="align">
+    <div class="grid">
+      <form>
+        <div class="registration_form">
+          <h2>registration</h2>
+          <!-- User Name-->
+          <form
+            class="form"
+            method="post"
+            [formGroup]="registerForm"
+            #registerUser
+          >
+            <div class="form-group">
+              <input
+                class="input form-control"
+                type="text"
+                name="name"
+                autocomplete="off"
+                placeholder="User Name"
+                #username
+                id="username"
+                formControlName="username"
+              /><br />
+              <div class="text-danger" *ngIf="userNameExists">
+                Username already exists. choose another one
+              </div>
+              <div name="validations" *ngIf="registerForm.invalid">
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    firstClick &&
+                    registerForm.controls.username.errors?.required
+                  "
+                  >Username is required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.username.errors?.maxlength"
+                  >username characters exceeded maximum length of 20</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.username.errors?.minlength"
+                  >username characters are less than 5 characters</span
+                >
+              </div>
+            </div>
+            <!--span class="login_error" id="name_error"></span-->
+
+            <!-- Email -->
+            <div class="form-group">
+              <input
+                class="input form-control"
+                name="email"
+                id="email"
+                autocomplete="off"
+                placeholder="Email"
+                #email
+                type="text"
+                formControlName="email"
+              /><br />
+              <div class="text-danger" *ngIf="emailExists">
+                Email already exists
+              </div>
+              <div name="validations" *ngIf="registerForm.invalid">
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    firstClick && registerForm.controls.email.errors?.required
+                  "
+                  >email is required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.email.errors?.email"
+                  >enter valid email address</span
+                >
+              </div>
+            </div>
+
+            <!-- Password-->
+            <div class="form-group">
+              <input
+                class="input form-control"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                (keyup)="validateConfirmPass(password, confirmPassword)"
+                #password
+                type="password"
+                formControlName="password"
+              /><br />
+              <div name="validations" *ngIf="registerForm.invalid">
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    firstClick &&
+                    registerForm.controls.password.errors?.required
+                  "
+                  >password is required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.password.errors?.maxlength"
+                  >password characters exceeded maximum length of 20</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.password.errors?.minlength"
+                  >password characters are less than 8 characters</span
+                >
+              </div>
+            </div>
+
+            <!--Confirm Password-->
+            <div class="form-group">
+              <input
+                class="input form-control"
+                type="password"
+                placeholder="Confirm Password"
+                id="confPassword"
+                name="confPassword"
+                #confirmPassword
+                formControlName="confirmPassword"
+                (keyup)="validateConfirmPass(password, confirmPassword)"
+              /><br />
+              <div name="validations" *ngIf="registerForm.invalid">
+                <span class="text-danger" *ngIf="!checkConfPass && firstClick"
+                  >Note: confirmation password should match password</span
+                >
+                <span class="msg" *ngIf="checkConfPass"
+                  >confirmation password matched password</span
+                >
+              </div>
+            </div>
+            <!--First Name-->
+
+            <div class="form-group">
+              <input
+                class="input form-control"
+                type="text"
+                autocomplete="off"
+                placeholder="First Name"
+                #firstname
+                name="firstname"
+                id="firstname"
+                formControlName="firstname"
+              /><br />
+              <div name="validations" *ngIf="registerForm.invalid">
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    firstClick &&
+                    registerForm.controls.firstname.errors?.required
+                  "
+                  >firstname is required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.firstname.errors?.maxlength"
+                  >firstname characters exceeded maximum length of 15</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.firstname.errors?.minlength"
+                  >firstname characters are less than 3 characters</span
+                >
+              </div>
+            </div>
+
+            <!--Last Name-->
+            <div class="form-group">
+              <input
+                class="input form-control"
+                type="text"
+                autocomplete="off"
+                placeholder="Last Name"
+                #lastname
+                name="lastname"
+                id="lastname"
+                formControlName="lastname"
+              /><br />
+              <div name="validations" *ngIf="registerForm.invalid">
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    firstClick &&
+                    registerForm.controls.lastname.errors?.required
+                  "
+                  >lastname is required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.lastname.errors?.maxlength"
+                  >lastname characters exceeded maximum length of 15</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.lastname.errors?.minlength"
+                  >lastname characters are less than 3 characters</span
+                >
+              </div>
+            </div>
+
+            <!-- Age-->
+
+            <div class="form-group">
+              <input
+                class="input form-control"
+                name="age"
+                id="age"
+                placeholder="Age"
+                #age
+                type="number"
+                formControlName="age"
+              /><br />
+              <div name="validations" *ngIf="registerForm.invalid">
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    firstClick && registerForm.controls.age.errors?.required
+                  "
+                  >age is required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.age.errors?.max"
+                  >age shouldn't be more than 100</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="registerForm.controls.age.errors?.min"
+                  >age shouldn't be less than 8</span
+                >
+              </div>
+            </div>
+
+            <!-- Gender-->
+            <div class="form-group">
+              <p>select your gender:</p>
+
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                #male
+                (click)="chooseGender(male.value)"
+                class="btn"
+                value="male"
+                type="radio"
+                [ngClass]="{
+                  'btn-outline-secondary': gender != 'male',
+                  'btn-secondary': gender == 'male'
+                }"
+              />
+              Male
+
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                #female
+                (click)="chooseGender(female.value)"
+                class="btn"
+                value="female"
+                [ngClass]="{
+                  'btn-outline-secondary': gender != 'female',
+                  'btn-secondary': gender == 'female'
+                }"
+              />
+              Female
+              <br />
+
+              <!--button #male (click)="chooseGender(male.value)" class="btn mx-3" value="male" type="button" [ngClass]="{'btn-outline-secondary': gender != 'male', 'btn-secondary':gender == 'male' }">Male</button>
+           <button #female (click)="chooseGender(female.value)" class="btn mx-3" value="female" type="button" [ngClass]="{'btn-outline-secondary': gender != 'female', 'btn-secondary':gender == 'female' }">Female</button-->
+
+              <div *ngIf="firstClick && gender == ''" class="text-center">
+                <span class="text-danger">Gender is required. Choose one</span>
+              </div>
+            </div>
+
+            <!-- Phone Numer-->
+            <div class="form-group">
+              <input
+                class="input form-control"
+                placeholder="Phone Number (optional)"
+                #phone
+                type="number"
+              /><br />
+            </div>
+
+            <!--Submit-->
+
+            <br /><button
+              class="button btn btn-primary"
+              id="phone"
+              name="phone"
+              [disabled]="registerForm.invalid || !checkConfPass"
+              *ngIf="!registered"
+              type="button"
+              (click)="
+                register(
+                  username,
+                  email,
+                  password,
+                  firstname,
+                  lastname,
+                  age,
+                  phone
+                )
+              "
+            >
+              submit</button
+            ><br />
+
+            <h4 class="text-primary" *ngIf="registered">
+              {{ registered }}. Login with your details. after
+              <span
+                style="cursor: pointer"
+                (click)="navigateLogin()"
+                class="text-danger"
+                ><u>click here</u></span
+              >
+            </h4>
+          </form>
+        </div>
+      </form>
+    </div>
+  </body>
+</div>

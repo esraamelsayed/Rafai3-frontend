@@ -1,0 +1,52 @@
+.category-menu-item{
+  color: rgb(239,217,209);
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.category-menu-item:hover{
+  text-shadow: 2px 2px rgb(216,172,156);
+}
+
+.category-menu-item-selected{
+  color: rgb(216,172,156);
+}
+nav {
+    /*background-color: rgb(216,172,156,0.7);*/
+    background-color: rgb(153, 155, 132, 0.7) !important;
+}
+
+#login:hover {
+    background-color: rgb(216, 172, 156);
+    transform: scale(0.93, 0.93);
+    box-shadow: 4px 4px 27px 13px rgba(216, 172, 156, 0.25), -4px -4px 30px 12px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+}
+
+#register:hover {
+    background-color: rgb(216, 172, 156);
+    transform: scale(0.93, 0.93);
+    box-shadow: 4px 4px 27px 13px rgba(216, 172, 156, 0.25), -4px -4px 30px 12px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+}
+
+a:hover,
+a:active,
+a:focus {
+    transform: scale(0.94, 0.94);
+    font-weight: bold;
+    color: rgb(216, 172, 156) !important;
+}
+
+#product {
+    color: rgb(251, 242, 239) !important;
+}
+
+#product:hover,
+#product:active,
+#product:focus {
+    transform: scale(0.94, 0.94);
+    color: rgb(216, 172, 156) !important;
+    font-weight: bold;
+}

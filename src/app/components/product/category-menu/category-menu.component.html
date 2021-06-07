@@ -1,0 +1,11 @@
+<div class='row sticky-top  d-flex justify-content-center align-content-center'
+style="background-color: rgb(153,155,132);">
+  <div class='d-flex justify-content-center align-content-center'>
+    <div class='category-menu-item mx-5 my-2' routerLinkActive = 'category-menu-item-selected' (click) = 'onClickMenu("kitchen")' [routerLink]="'kitchen'">Kitchen</div>
+    <div class='category-menu-item mx-5 my-2' routerLinkActive = 'category-menu-item-selected' (click) = 'onClickMenu("living")' [routerLink]="'living'">Living</div>
+    <div class='category-menu-item mx-5 my-2' routerLinkActive = 'category-menu-item-selected' (click) = 'onClickMenu("bedroom")' [routerLink]="'bedroom'">Bedroom</div>
+    <div class='category-menu-item mx-5 my-2' routerLinkActive = 'category-menu-item-selected' (click) = 'onClickMenu("bathroom")' [routerLink]="'bathroom'">Bathroom</div>
+    <div class='category-menu-item mx-5 my-2' routerLinkActive = 'category-menu-item-selected' (click) = 'onClickMenu("others")' [routerLink]="'others'">Others</div>
+  </div>
+  <app-search-box (searchEmitter)="onFiltering($event)"></app-search-box>
+</div>

@@ -1,0 +1,17 @@
+i{
+  font-size: 2rem;
+}
+
+i:hover{
+  font-size: 3rem;
+  cursor: pointer;
+  color: rgb(239,217,209);
+}
+
+::ng-deep .snackBar{
+  background-color: rgb(153,155,132);
+  color: rgb(239,217,209);
+
+}
+
+
